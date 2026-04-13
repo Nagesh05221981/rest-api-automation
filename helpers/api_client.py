@@ -20,3 +20,5 @@ class APIClient:
 
     def put(self, endpoint: str, json: dict):
         return self.session.put(self.base_url + endpoint, json=json)
+    def delete(self, endpoint: str):
+        return self.session.delete(self.base_url + endpoint)

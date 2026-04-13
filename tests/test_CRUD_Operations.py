@@ -114,6 +114,25 @@ def test_update_task(client,endpoints,payloads):
     assert updated_task["task_id"] == task_id
     assert updated_task["content"] == "updated content"
 
+def test_delete_task(client,endpoints,payloads):
+
+    payload = payloads["sample_task"].copy()
+    payload["task_id"] = str(uuid.uuid4())
+
+    # -----------------create task ---------------------
+    create_response = client.put( endpoint=endpoints["create_task"],json=payload)
+    assert create_response.status_code == 200
+    task_id = payload["task_id"]
+
+    # ---------------delete task --------------------------
+    delete_response = client.delete(endpoint=endpoints["delete_task"].format(task_id=task_id))
+    assert delete_response.status_code == 200
+
+    # ---------------verify task is deleted -----------------
+    get_tasks = client.get(endpoints["get_task"].format(task_id=task_id))
+    assert get_tasks.status_code in [404,410]
+
+
 
 
 

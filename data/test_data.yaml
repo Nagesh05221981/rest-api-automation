@@ -8,6 +8,7 @@ endpoints:
   get_task: "/get-task/{task_id}"
   list_tasks: "/list-tasks/{user_id}"
   update_task: "/update-task"
+  delete_task: "/delete-task/{task_id}"
 
 payloads:
   sample_task:
