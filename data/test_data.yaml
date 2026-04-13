@@ -1,0 +1,17 @@
+# data/test_data.yaml
+
+base_url: "https://todo.pixegami.io"
+
+endpoints:
+  health: "/"
+  create_task: "/create-task"
+  get_task: "/get-task/{task_id}"
+  list_tasks: "/list-tasks/{user_id}"
+  update_task: "/update-task"
+
+payloads:
+  sample_task:
+    content: "Api_Automation"
+    user_id: "test_user"
+    task_id: "string"
+    is_done: false
